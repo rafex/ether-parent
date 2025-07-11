@@ -75,9 +75,8 @@
 		<org.everit.json.schema.version>1.15.3</org.everit.json.schema.version>
 		<asm.version>9.7</asm.version>
 		<commons-lang3.version>3.18.0</commons-lang3.version>
-		<javax.mail.version>1.6.2</javax.mail.version>
+		<jakarta.mail-api.version>2.1.3</jakarta.mail-api.version>
 		<guice.version>7.0.0</guice.version>
-		<openjpa.version>3.2.2</openjpa.version>
 		<junit-bom.version>5.13.3</junit-bom.version>
 		<netty.version>4.1.100.Final</netty.version>
 		<jackson.version>2.19.1</jackson.version>
@@ -113,11 +112,6 @@
 				<version>${guice.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.apache.openjpa</groupId>
-				<artifactId>openjpa</artifactId>
-				<version>${openjpa.version}</version>
-			</dependency>
-			<dependency>
 				<groupId>org.everit.json</groupId>
 				<artifactId>org.everit.json.schema</artifactId>
 				<version>${org.everit.json.schema.version}</version>
@@ -129,9 +123,9 @@
 				</exclusions>
 			</dependency>
 			<dependency>
-				<groupId>com.sun.mail</groupId>
-				<artifactId>javax.mail</artifactId>
-				<version>${javax.mail.version}</version>
+				<groupId>jakarta.mail</groupId>
+				<artifactId>jakarta.mail-api</artifactId>
+				<version>${jakarta.mail-api.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.commons</groupId>
