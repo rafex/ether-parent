@@ -12,23 +12,13 @@ endef
 
 DEV_SNAPSHOT := $(shell $(next_snapshot))
 
+.ONESHELL:
 .PHONY: deploy
 deploy:
 	@echo "Writing settings.xml..."
 	@mkdir -p ~/.m2
-	@cat > ~/.m2/settings.xml <<-EOF
-	<settings>
-	  <servers>
-	    <server>
-	      <id>ossrh</id>
-	      <!-- usa tu Portal User Token -->
-	      <username>${OSSRH_USERNAME}</username>
-	      <password>${OSSRH_PASSWORD}</password>
-	    </server>
-	  </servers>
-	</settings>
-	EOF
+	@printf '<settings>\n  <servers>\n    <server>\n      <id>ossrh</id>\n      <!-- usa tu Portal User Token -->\n      <username>%s</username>\n      <password>%s</password>\n    </server>\n  </servers>\n</settings>\n' "$$OSSRH_USERNAME" "$$OSSRH_PASSWORD" > ~/.m2/settings.xml
 	@echo "Setting project version to $(TAG)..."
-	mvn versions:set -DnewVersion=$(TAG) -DgenerateBackupPoms=false
+	cd ether-parent && mvn versions:set -DnewVersion=$(TAG) -DgenerateBackupPoms=false
 	@echo "Deploying version $(TAG)..."
-	mvn clean deploy -DskipTests -Dgpg.passphrase="$(GPG_PASSPHRASE)"
+	cd ether-parent && mvn clean deploy -DskipTests -Dgpg.passphrase="$(GPG_PASSPHRASE)"
