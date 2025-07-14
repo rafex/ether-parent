@@ -79,6 +79,7 @@
 		<junit-bom.version>5.13.3</junit-bom.version>
 		<netty.version>4.1.100.Final</netty.version>
 		<jackson.version>2.19.1</jackson.version>
+		<versions-maven-plugin.version>2.18.0</versions-maven-plugin.version>
 	</properties>
 
 	<dependencyManagement>
@@ -283,6 +284,11 @@
 						<autoPublish>true</autoPublish>
 						<waitUntil>published</waitUntil>
 					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>versions-maven-plugin</artifactId>
+					<version>${versions-maven-plugin.version}</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
