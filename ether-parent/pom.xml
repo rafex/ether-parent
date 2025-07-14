@@ -33,11 +33,10 @@
 	</developers>
 
 	<scm>
-		<connection>scm:git:git://github.com/rafex/ether-parent.git</connection>
-		<developerConnection>scm:git:ssh://github.com:rafex/ether-parent.git</developerConnection>
-		<url>https://github.com/rafex/ether-parent/tree/master</url>
-	  <tag>v1.3.0</tag>
-  </scm>
+		<connection>scm:git:git@github.com:rafex/ether-parent.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/rafex/ether-parent.git</developerConnection>
+		<url>https://github.com/rafex/ether-parent</url>
+	</scm>
 
 	<distributionManagement>
 		<snapshotRepository>
