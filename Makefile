@@ -11,6 +11,9 @@ load-env:
 	else \
 		echo "No .env file found, skipping environment load"; \
 	fi
+	@echo "OSSRH_USERNAME=$$OSSRH_USERNAME"
+	@echo "OSSRH_PASSWORD length=$${#OSSRH_PASSWORD}"
+	@echo "GPG_PASSPHRASE length=$${#GPG_PASSPHRASE}"
 
 # Extract tag (e.g., v0.3.0 → 0.3.0)
 TAG := $(shell git describe --tags --abbrev=0 2>/dev/null | sed 's/^v//' || echo "0.0.0")
