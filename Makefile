@@ -1,19 +1,18 @@
 # Makefile
 
+# Load .env into Make variables if present
+ifneq (,$(wildcard .env))
+  include .env
+  export OSSRH_USERNAME OSSRH_PASSWORD GPG_PASSPHRASE
+endif
 
-# Task to load environment variables from .env, if present
-.PHONY: load-env write-settings set-version build deploy
-load-env:
-	@echo "Checking for .env file..."
-	@if [ -f .env ]; then \
-		echo "Loading variables from .env"; \
-		set -o allexport; . ./.env; set +o allexport; \
-	else \
-		echo "No .env file found, skipping environment load"; \
-	fi
-	@echo "OSSRH_USERNAME=$$OSSRH_USERNAME"
-	@echo "OSSRH_PASSWORD length=$${#OSSRH_PASSWORD}"
-	@echo "GPG_PASSPHRASE length=$${#GPG_PASSPHRASE}"
+## show-env: display loaded environment variables
+show-env:
+	@echo "OSSRH_USERNAME='$(OSSRH_USERNAME)'"
+	@echo "OSSRH_PASSWORD length='$(shell printf '%s' "$(OSSRH_PASSWORD)" | wc -c)'"
+	@echo "GPG_PASSPHRASE length='$(shell printf '%s' "$(GPG_PASSPHRASE)" | wc -c)'"
+
+.PHONY: show-env write-settings set-version build deploy
 
 # Extract tag (e.g., v0.3.0 → 0.3.0)
 TAG := $(shell git describe --tags --abbrev=0 2>/dev/null | sed 's/^v//' || echo "0.0.0")
@@ -44,7 +43,6 @@ build: set-version
 	cd ether-parent && mvn clean verify
 
 ## deploy: write settings and set version, then deploy to Maven Central
-deploy: load-env write-settings set-version
+deploy: write-settings set-version
 	@echo "Deploying version $(TAG)..."
 	cd ether-parent && mvn clean deploy -DskipTests -Dgpg.passphrase="$(GPG_PASSPHRASE)"
-
