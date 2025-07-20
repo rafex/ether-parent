@@ -1,9 +1,13 @@
 # Makefile
 
-# Extrae el tag (ej: v0.3.0 → 0.3.0)
+# Import environment variables from .env at the same directory level
+-include .env
+export $(shell sed -n 's/^\([^=]*\)=.*/\1/p' .env)
+
+# Extract tag (e.g., v0.3.0 → 0.3.0)
 TAG := $(shell git describe --tags --abbrev=0 2>/dev/null | sed 's/^v//' || echo "0.0.0")
 
-# Ajusta a snapshot siguiente (0.3.0 → 0.4.0-SNAPSHOT)
+# Calculate next snapshot (0.3.0 → 0.4.0-SNAPSHOT)
 define next_snapshot
   major=$$(echo $(TAG) | cut -d. -f1); \
   minor=$$(echo $(TAG) | cut -d. -f2); \
@@ -12,13 +16,24 @@ endef
 
 DEV_SNAPSHOT := $(shell $(next_snapshot))
 
-.ONESHELL:
-.PHONY: deploy
-deploy:
+.PHONY: write-settings set-version deploy all
+
+## write-settings: generate ~/.m2/settings.xml using OSSRH credentials
+write-settings:
 	@echo "Writing settings.xml..."
 	@mkdir -p ~/.m2
-	@printf '<settings>\n  <servers>\n    <server>\n      <id>ossrh</id>\n      <!-- usa tu Portal User Token -->\n      <username>%s</username>\n      <password>%s</password>\n    </server>\n  </servers>\n</settings>\n' "$$OSSRH_USERNAME" "$$OSSRH_PASSWORD" > ~/.m2/settings.xml
+	@printf '<settings>\n  <servers>\n    <server>\n      <id>ossrh</id>\n      <!-- usa tu Portal User Token -->\n      <username>%s</username>\n      <password>%s</password>\n    </server>\n  </servers>\n</settings>\n' "$(OSSRH_USERNAME)" "$(OSSRH_PASSWORD)" > ~/.m2/settings.xml
+
+## set-version: update project version in POM based on Git tag
+set-version:
 	@echo "Setting project version to $(TAG)..."
 	cd ether-parent && mvn versions:set -DnewVersion=$(TAG) -DgenerateBackupPoms=false
+
+## deploy: write settings and set version, then deploy to Maven Central
+deploy: write-settings set-version
 	@echo "Deploying version $(TAG)..."
 	cd ether-parent && mvn clean deploy -DskipTests -Dgpg.passphrase="$(GPG_PASSPHRASE)"
+
+## all: alias for deploy
+all: deploy
+``
