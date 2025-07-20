@@ -16,7 +16,7 @@ endef
 
 DEV_SNAPSHOT := $(shell $(next_snapshot))
 
-.PHONY: write-settings set-version deploy all
+.PHONY: write-settings set-version deploy
 
 ## write-settings: generate ~/.m2/settings.xml using OSSRH credentials
 write-settings:
@@ -34,6 +34,3 @@ deploy: write-settings set-version
 	@echo "Deploying version $(TAG)..."
 	cd ether-parent && mvn clean deploy -DskipTests -Dgpg.passphrase="$(GPG_PASSPHRASE)"
 
-## all: alias for deploy
-all: deploy
-``
