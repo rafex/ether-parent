@@ -4,6 +4,7 @@
 ifneq (,$(wildcard .env))
   include .env
   export OSSRH_USERNAME OSSRH_PASSWORD GPG_PASSPHRASE
+  export MAVEN_GPG_PASSPHRASE=$(GPG_PASSPHRASE)
 endif
 
 ## show-env: display loaded environment variables
@@ -30,7 +31,7 @@ DEV_SNAPSHOT := $(shell $(next_snapshot))
 write-settings:
 	@echo "Writing settings.xml..."
 	@mkdir -p ~/.m2
-	@printf '<settings>\n  <servers>\n    <server>\n      <id>ossrh</id>\n      <!-- usa tu Portal User Token -->\n      <username>%s</username>\n      <password>%s</password>\n    </server>\n  </servers>\n</settings>\n' "$(OSSRH_USERNAME)" "$(OSSRH_PASSWORD)" > ~/.m2/settings.xml
+	@printf '<settings>\n  <servers>\n    <server>\n      <id>central</id>\n      <!-- usa tu Portal User Token -->\n      <username>%s</username>\n      <password>%s</password>\n    </server>\n  </servers>\n</settings>\n' "$(OSSRH_USERNAME)" "$(OSSRH_PASSWORD)" > ~/.m2/settings.xml
 
 ## set-version: update project version in POM based on Git tag
 set-version:
@@ -45,4 +46,4 @@ build: set-version
 ## deploy: write settings and set version, then deploy to Maven Central
 deploy: write-settings set-version
 	@echo "Deploying version $(TAG)..."
-	cd ether-parent && mvn clean deploy -DskipTests -Dgpg.passphrase="$(GPG_PASSPHRASE)"
+	cd ether-parent && mvn clean deploy -DskipTests -Dgpg.skip=false
