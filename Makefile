@@ -30,7 +30,7 @@ endef
 DEV_SNAPSHOT := $(shell $(next_snapshot))
 
 # Build date for version suffix
-BUILD_DATE := $(shell date +%Y-%m-%d)
+BUILD_DATE := $(shell date +%Y%m%d)
 # Version with date suffix (e.g., 4.0.0-v2025-07-21)
 VERSION := $(TAG)-v$(BUILD_DATE)
 
