@@ -6,7 +6,7 @@
 
 	<groupId>dev.rafex.ether.parent</groupId>
 	<artifactId>ether-parent</artifactId>
-	<version>4.0.0</version>
+	<version>3.0.0</version>
 
 	<packaging>pom</packaging>
 	<name>${project.artifactId}</name>

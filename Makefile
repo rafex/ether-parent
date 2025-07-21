@@ -14,8 +14,11 @@ show-env:
 
 .PHONY: show-env write-settings set-version build deploy
 
-# Extract tag (e.g., v0.3.0 → 0.3.0)
-TAG := $(shell git describe --tags --abbrev=0 2>/dev/null | sed 's/^v//' || echo "0.0.0")
+#
+# Raw Git tag, or default "0.0.0"
+TAG_RAW := $(shell git describe --tags --abbrev=0 2>/dev/null || echo "0.0.0")
+# Final tag without leading "v" or "V"
+TAG := $(shell echo "$(TAG_RAW)" | sed -E 's/^[vV]//')
 
 # Calculate next snapshot (0.3.0 → 0.4.0-SNAPSHOT)
 define next_snapshot
@@ -26,6 +29,11 @@ endef
 
 DEV_SNAPSHOT := $(shell $(next_snapshot))
 
+# Build date for version suffix
+BUILD_DATE := $(shell date +%Y-%m-%d)
+# Version with date suffix (e.g., 4.0.0-v2025-07-21)
+VERSION := $(TAG)-v$(BUILD_DATE)
+
 ## write-settings: generate ~/.m2/settings.xml using OSSRH credentials
 write-settings:
 	@echo "Writing settings.xml..."
@@ -34,15 +42,15 @@ write-settings:
 
 ## set-version: update project version in POM based on Git tag
 set-version:
-	@echo "Setting project version to $(TAG)..."
-	cd ether-parent && mvn versions:set -DnewVersion=$(TAG) -DgenerateBackupPoms=false
+	@echo "Setting project version to $(VERSION)..."
+	cd ether-parent && mvn versions:set -DnewVersion=$(VERSION) -DgenerateBackupPoms=false
 
 ## build: update version and compile+test project
 build: set-version
-	@echo "Building project version $(TAG)..."
+	@echo "Building project version $(VERSION)..."
 	cd ether-parent && mvn clean verify
 
 ## deploy: write settings and set version, then deploy to Maven Central
 deploy: write-settings set-version
-	@echo "Deploying version $(TAG)..."
+	@echo "Deploying version $(VERSION)..."
 	cd ether-parent && mvn clean deploy -DskipTests -Dgpg.skip=false
