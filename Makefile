@@ -3,8 +3,7 @@
 # Load .env into Make variables if present
 ifneq (,$(wildcard .env))
   include .env
-  export OSSRH_USERNAME OSSRH_PASSWORD GPG_PASSPHRASE
-  export MAVEN_GPG_PASSPHRASE=$(GPG_PASSPHRASE)
+  export OSSRH_USERNAME OSSRH_PASSWORD MAVEN_GPG_PASSPHRASE
 endif
 
 ## show-env: display loaded environment variables
