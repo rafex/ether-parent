@@ -12,7 +12,11 @@
 	<name>${project.artifactId}</name>
 
 	<description>
-		utilities to create microservices without frameworks
+		Colección de utilidades ligeras y modulares para crear, configurar y
+		desplegar microservicios en Java sin necesidad de frameworks pesados.
+		Incluye componentes reutilizables de JSON, gestión de propiedades, JDBC,
+		email, CLI y más, facilitando la implementación ágil y estandarizada de
+		servicios REST.
 	</description>
 
 	<url>https://rafex.dev/ether/parent</url>
@@ -24,6 +28,11 @@
 			<distribution>repo</distribution>
 		</license>
 	</licenses>
+
+	<issueManagement>
+		<system>GitHub Issues</system>
+		<url>https://github.com/rafex/ether-parent/issues</url>
+	</issueManagement>
 
 	<developers>
 		<developer>
@@ -295,26 +304,26 @@
 				</configuration>
 			</plugin>
 			<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-gpg-plugin</artifactId>
-					<executions>
-						<execution>
-							<id>sign-artifacts</id>
-							<phase>verify</phase>
-							<goals>
-								<goal>sign</goal>
-							</goals>
-						</execution>
-					</executions>
-					<configuration>
-						<gpgArguments>
-							<arg>--pinentry-mode</arg>
-							<arg>loopback</arg>
-						</gpgArguments>
-						<useAgent>false</useAgent>
-						<passphrase>${gpg.passphrase}</passphrase>
-					</configuration>
-				</plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<gpgArguments>
+						<arg>--pinentry-mode</arg>
+						<arg>loopback</arg>
+					</gpgArguments>
+					<useAgent>false</useAgent>
+					<passphrase>${gpg.passphrase}</passphrase>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 </project>
