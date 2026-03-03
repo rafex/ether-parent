@@ -25,3 +25,15 @@ replay_pid*
 
 .vscode/
 .env
+# IDE files
+.idea/
+.vs/
+*.iml
+
+# Eclipse files
+.project
+.classpath
+.settings/
+.factorypath
+.apt_generated
+.springBeans
