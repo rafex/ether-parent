@@ -333,21 +333,18 @@
 	<profiles>
 		<profile>
 			<id>deploy</id>
-			<properties>
-				<artifactory.base-url>https://your-artifactory-domain/artifactory</artifactory.base-url>
-			</properties>
-			<distributionManagement>
-				<repository>
-					<id>artifactory</id>
-					<url>${artifactory.base-url}/libs-release-local</url>
-				</repository>
-				<snapshotRepository>
-					<id>artifactory</id>
-					<url>${artifactory.base-url}/libs-snapshot-local</url>
-				</snapshotRepository>
-			</distributionManagement>
 			<build>
 				<plugins>
+					<plugin>
+						<groupId>org.sonatype.central</groupId>
+						<artifactId>central-publishing-maven-plugin</artifactId>
+						<extensions>true</extensions>
+						<configuration>
+							<publishingServerId>central</publishingServerId>
+							<autoPublish>true</autoPublish>
+							<waitUntil>published</waitUntil>
+						</configuration>
+					</plugin>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-gpg-plugin</artifactId>
