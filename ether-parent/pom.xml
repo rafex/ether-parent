@@ -200,6 +200,13 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-javadoc-plugin</artifactId>
 					<version>${maven-javadoc-plugin.version}</version>
+					<configuration>
+						<source>${java.version}</source>
+						<release>${java.version}</release>
+						<doclint>none</doclint>
+						<quiet>true</quiet>
+						<failOnWarnings>false</failOnWarnings>
+					</configuration>
 					<executions>
 						<execution>
 							<id>attach-javadocs</id>
@@ -278,11 +285,11 @@
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>license-maven-plugin</artifactId>
 					<version>${license-maven-plugin.version}</version>
-					<configuration>
-						<licenseName>mit</licenseName>
-						<organizationName>Raúl Eduardo González Argote</organizationName>
-						<inceptionYear>2025</inceptionYear>
-						<projectName>${project.name}</projectName>
+						<configuration>
+							<licenseName>mit</licenseName>
+							<organizationName>Raúl Eduardo González Argote</organizationName>
+							<inceptionYear>2025</inceptionYear>
+							<projectName>${project.name}</projectName>
 
 						<!-- Configuración específica para resolver el problema -->
 						<roots>
@@ -294,15 +301,12 @@
 							<include>**/*.java</include>
 						</includes>
 
-						<excludes>
-							<exclude>**/generated/**</exclude>
-							<exclude>**/target/**</exclude>
-						</excludes>
-
-						<!-- Configuración de validación -->
-						<failOnMissingHeader>true</failOnMissingHeader>
-					</configuration>
-					<executions>
+							<excludes>
+								<exclude>**/generated/**</exclude>
+								<exclude>**/target/**</exclude>
+							</excludes>
+						</configuration>
+						<executions>
 						<execution>
 							<id>update-licenses</id>
 							<phase>generate-sources</phase>
@@ -311,13 +315,16 @@
 								<goal>update-project-license</goal>
 							</goals>
 						</execution>
-						<execution>
-							<id>check-license</id>
-							<goals>
-								<goal>check-file-header</goal>
-							</goals>
-							<phase>validate</phase>
-						</execution>
+							<execution>
+								<id>check-license</id>
+								<goals>
+									<goal>check-file-header</goal>
+								</goals>
+								<phase>validate</phase>
+								<configuration>
+									<failOnMissingHeader>true</failOnMissingHeader>
+								</configuration>
+							</execution>
 						<execution>
 							<id>add-license</id>
 							<goals>
