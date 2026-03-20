@@ -6,7 +6,7 @@
 
 	<groupId>dev.rafex.ether.parent</groupId>
 	<artifactId>ether-parent</artifactId>
-	<version>5.0.0-SNAPSHOT</version>
+	<version>8.0.0-SNAPSHOT</version>
 
 	<packaging>pom</packaging>
 	<name>${project.artifactId}</name>
@@ -80,7 +80,27 @@
 		<junit-bom.version>5.13.4</junit-bom.version>
 		<netty.version>4.1.131.Final</netty.version>
 		<jackson.version>2.19.4</jackson.version>
+		<jetty.version>12.1.6</jetty.version>
+		<glowroot-agent-api.version>0.14.0-beta.3</glowroot-agent-api.version>
 		<versions-maven-plugin.version>2.18.0</versions-maven-plugin.version>
+
+		<ether-config.version>8.0.0-SNAPSHOT</ether-config.version>
+		<ether-database-core.version>8.0.0-SNAPSHOT</ether-database-core.version>
+		<ether-jdbc.version>8.0.0-SNAPSHOT</ether-jdbc.version>
+		<ether-database-postgres.version>8.0.0-SNAPSHOT</ether-database-postgres.version>
+		<ether-json.version>8.0.0-SNAPSHOT</ether-json.version>
+		<ether-jwt.version>8.0.0-SNAPSHOT</ether-jwt.version>
+		<ether-observability-core.version>8.0.0-SNAPSHOT</ether-observability-core.version>
+		<ether-http-core.version>8.0.0-SNAPSHOT</ether-http-core.version>
+		<ether-http-security.version>8.0.0-SNAPSHOT</ether-http-security.version>
+		<ether-http-problem.version>8.0.0-SNAPSHOT</ether-http-problem.version>
+		<ether-http-openapi.version>8.0.0-SNAPSHOT</ether-http-openapi.version>
+		<ether-http-client.version>8.0.0-SNAPSHOT</ether-http-client.version>
+		<ether-http-jetty12.version>8.0.0-SNAPSHOT</ether-http-jetty12.version>
+		<ether-websocket-core.version>8.0.0-SNAPSHOT</ether-websocket-core.version>
+		<ether-websocket-jetty12.version>8.0.0-SNAPSHOT</ether-websocket-jetty12.version>
+		<ether-webhook.version>8.0.0-SNAPSHOT</ether-webhook.version>
+		<ether-glowroot-jetty12.version>8.0.0-SNAPSHOT</ether-glowroot-jetty12.version>
 	</properties>
 
 	<dependencyManagement>
@@ -134,7 +154,115 @@
 				<artifactId>netty-handler</artifactId>
 				<version>${netty.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-server</artifactId>
+				<version>${jetty.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.jetty.websocket</groupId>
+				<artifactId>jetty-websocket-jetty-api</artifactId>
+				<version>${jetty.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.jetty.websocket</groupId>
+				<artifactId>jetty-websocket-jetty-server</artifactId>
+				<version>${jetty.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.glowroot</groupId>
+				<artifactId>glowroot-agent-api</artifactId>
+				<version>${glowroot-agent-api.version}</version>
+			</dependency>
 			<!-- 3er -->
+
+			<!-- Ether -->
+			<dependency>
+				<groupId>dev.rafex.ether.config</groupId>
+				<artifactId>ether-config</artifactId>
+				<version>${ether-config.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>dev.rafex.ether.database</groupId>
+				<artifactId>ether-database-core</artifactId>
+				<version>${ether-database-core.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>dev.rafex.ether.jdbc</groupId>
+				<artifactId>ether-jdbc</artifactId>
+				<version>${ether-jdbc.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>dev.rafex.ether.database</groupId>
+				<artifactId>ether-database-postgres</artifactId>
+				<version>${ether-database-postgres.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>dev.rafex.ether.json</groupId>
+				<artifactId>ether-json</artifactId>
+				<version>${ether-json.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>dev.rafex.ether.jwt</groupId>
+				<artifactId>ether-jwt</artifactId>
+				<version>${ether-jwt.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>dev.rafex.ether.observability</groupId>
+				<artifactId>ether-observability-core</artifactId>
+				<version>${ether-observability-core.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>dev.rafex.ether.http</groupId>
+				<artifactId>ether-http-core</artifactId>
+				<version>${ether-http-core.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>dev.rafex.ether.http</groupId>
+				<artifactId>ether-http-security</artifactId>
+				<version>${ether-http-security.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>dev.rafex.ether.http</groupId>
+				<artifactId>ether-http-problem</artifactId>
+				<version>${ether-http-problem.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>dev.rafex.ether.http</groupId>
+				<artifactId>ether-http-openapi</artifactId>
+				<version>${ether-http-openapi.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>dev.rafex.ether.http</groupId>
+				<artifactId>ether-http-client</artifactId>
+				<version>${ether-http-client.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>dev.rafex.ether.http</groupId>
+				<artifactId>ether-http-jetty12</artifactId>
+				<version>${ether-http-jetty12.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>dev.rafex.ether.websocket</groupId>
+				<artifactId>ether-websocket-core</artifactId>
+				<version>${ether-websocket-core.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>dev.rafex.ether.websocket</groupId>
+				<artifactId>ether-websocket-jetty12</artifactId>
+				<version>${ether-websocket-jetty12.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>dev.rafex.ether.webhook</groupId>
+				<artifactId>ether-webhook</artifactId>
+				<version>${ether-webhook.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>dev.rafex.ether.glowroot</groupId>
+				<artifactId>ether-glowroot-jetty12</artifactId>
+				<version>${ether-glowroot-jetty12.version}</version>
+			</dependency>
+			<!-- Ether -->
 
 		</dependencies>
 	</dependencyManagement>
