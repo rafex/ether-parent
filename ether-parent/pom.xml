@@ -6,7 +6,7 @@
 
 	<groupId>dev.rafex.ether.parent</groupId>
 	<artifactId>ether-parent</artifactId>
-	<version>8.0.0-SNAPSHOT</version>
+	<version>8.1.0-SNAPSHOT</version>
 
 	<packaging>pom</packaging>
 	<name>${project.artifactId}</name>
@@ -54,57 +54,57 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<maven-compiler-plugin.version>3.14.1</maven-compiler-plugin.version>
+		<maven-compiler-plugin.version>3.15.0</maven-compiler-plugin.version>
 		<maven-surefire-plugin.version>3.5.5</maven-surefire-plugin.version>
-		<maven-jar-plugin.version>3.4.2</maven-jar-plugin.version>
+		<maven-jar-plugin.version>3.5.0</maven-jar-plugin.version>
 		<maven-install-plugin.version>3.1.4</maven-install-plugin.version>
 		<maven-deploy-plugin.version>3.1.4</maven-deploy-plugin.version>
 		<maven-clean-plugin.version>3.5.0</maven-clean-plugin.version>
-		<maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
+		<maven-resources-plugin.version>3.5.0</maven-resources-plugin.version>
 		<maven-site-plugin.version>4.0.0-M16</maven-site-plugin.version>
 		<maven-project-info-reports-plugin.version>3.9.0</maven-project-info-reports-plugin.version>
-		<maven-assembly-plugin.version>3.6.0</maven-assembly-plugin.version>
-		<maven-source-plugin.version>3.3.1</maven-source-plugin.version>
-		<maven-javadoc-plugin.version>3.11.3</maven-javadoc-plugin.version>
+		<maven-assembly-plugin.version>3.8.0</maven-assembly-plugin.version>
+		<maven-source-plugin.version>3.4.0</maven-source-plugin.version>
+		<maven-javadoc-plugin.version>3.12.0</maven-javadoc-plugin.version>
 		<maven-gpg-plugin.version>3.2.8</maven-gpg-plugin.version>
 		<maven-enforcer-plugin.version>3.6.2</maven-enforcer-plugin.version>
-		<maven-release-plugin.version>3.1.1</maven-release-plugin.version>
+		<maven-release-plugin.version>3.3.1</maven-release-plugin.version>
 
-		<license-maven-plugin.version>2.6.0</license-maven-plugin.version>
+		<license-maven-plugin.version>2.7.1</license-maven-plugin.version>
 		<central-publishing-maven-plugin.version>0.10.0</central-publishing-maven-plugin.version>
 		<central.waitUntil>published</central.waitUntil>
 		<json-schema-validator.version>1.5.9</json-schema-validator.version>
-		<commons-lang3.version>3.18.0</commons-lang3.version>
+		<commons-lang3.version>3.20.0</commons-lang3.version>
 		<jakarta.mail-api.version>2.1.5</jakarta.mail-api.version>
 		<guice.version>7.0.0</guice.version>
-		<junit-bom.version>5.13.4</junit-bom.version>
+		<junit-bom.version>5.14.3</junit-bom.version>
 		<netty.version>4.1.131.Final</netty.version>
-		<jackson.version>2.19.4</jackson.version>
-		<jetty.version>12.1.6</jetty.version>
+		<jackson.version>2.21.2</jackson.version>
+		<jetty.version>12.1.7</jetty.version>
 		<glowroot-agent-api.version>0.14.0-beta.3</glowroot-agent-api.version>
-		<versions-maven-plugin.version>2.18.0</versions-maven-plugin.version>
+		<versions-maven-plugin.version>2.21.0</versions-maven-plugin.version>
 
-		<ether-config.version>8.0.0-SNAPSHOT</ether-config.version>
-		<ether-database-core.version>8.0.0-SNAPSHOT</ether-database-core.version>
-		<ether-jdbc.version>8.0.0-SNAPSHOT</ether-jdbc.version>
-		<ether-database-postgres.version>8.0.0-SNAPSHOT</ether-database-postgres.version>
-		<ether-json.version>8.0.0-SNAPSHOT</ether-json.version>
-		<ether-jwt.version>8.0.0-SNAPSHOT</ether-jwt.version>
-		<ether-observability-core.version>8.0.0-SNAPSHOT</ether-observability-core.version>
-		<ether-http-core.version>8.0.0-SNAPSHOT</ether-http-core.version>
-		<ether-http-security.version>8.0.0-SNAPSHOT</ether-http-security.version>
-		<ether-http-problem.version>8.0.0-SNAPSHOT</ether-http-problem.version>
-		<ether-http-openapi.version>8.0.0-SNAPSHOT</ether-http-openapi.version>
-		<ether-http-client.version>8.0.0-SNAPSHOT</ether-http-client.version>
-		<ether-ai-core.version>8.0.0-SNAPSHOT</ether-ai-core.version>
-		<ether-ai-openai.version>8.0.0-SNAPSHOT</ether-ai-openai.version>
-		<ether-ai-deepseek.version>8.0.0-SNAPSHOT</ether-ai-deepseek.version>
-		<ether-logging-core.version>8.0.0-SNAPSHOT</ether-logging-core.version>
-		<ether-http-jetty12.version>8.0.0-SNAPSHOT</ether-http-jetty12.version>
-		<ether-websocket-core.version>8.0.0-SNAPSHOT</ether-websocket-core.version>
-		<ether-websocket-jetty12.version>8.0.0-SNAPSHOT</ether-websocket-jetty12.version>
-		<ether-webhook.version>8.0.0-SNAPSHOT</ether-webhook.version>
-		<ether-glowroot-jetty12.version>8.0.0-SNAPSHOT</ether-glowroot-jetty12.version>
+		<ether-config.version>8.1.0-SNAPSHOT</ether-config.version>
+		<ether-database-core.version>8.1.0-SNAPSHOT</ether-database-core.version>
+		<ether-jdbc.version>8.1.0-SNAPSHOT</ether-jdbc.version>
+		<ether-database-postgres.version>8.1.0-SNAPSHOT</ether-database-postgres.version>
+		<ether-json.version>8.1.0-SNAPSHOT</ether-json.version>
+		<ether-jwt.version>8.1.0-SNAPSHOT</ether-jwt.version>
+		<ether-observability-core.version>8.1.0-SNAPSHOT</ether-observability-core.version>
+		<ether-http-core.version>8.1.0-SNAPSHOT</ether-http-core.version>
+		<ether-http-security.version>8.1.0-SNAPSHOT</ether-http-security.version>
+		<ether-http-problem.version>8.1.0-SNAPSHOT</ether-http-problem.version>
+		<ether-http-openapi.version>8.1.0-SNAPSHOT</ether-http-openapi.version>
+		<ether-http-client.version>8.1.0-SNAPSHOT</ether-http-client.version>
+		<ether-ai-core.version>8.1.0-SNAPSHOT</ether-ai-core.version>
+		<ether-ai-openai.version>8.1.0-SNAPSHOT</ether-ai-openai.version>
+		<ether-ai-deepseek.version>8.1.0-SNAPSHOT</ether-ai-deepseek.version>
+		<ether-logging-core.version>8.1.0-SNAPSHOT</ether-logging-core.version>
+		<ether-http-jetty12.version>8.1.0-SNAPSHOT</ether-http-jetty12.version>
+		<ether-websocket-core.version>8.1.0-SNAPSHOT</ether-websocket-core.version>
+		<ether-websocket-jetty12.version>8.1.0-SNAPSHOT</ether-websocket-jetty12.version>
+		<ether-webhook.version>8.1.0-SNAPSHOT</ether-webhook.version>
+		<ether-glowroot-jetty12.version>8.1.0-SNAPSHOT</ether-glowroot-jetty12.version>
 	</properties>
 
 	<dependencyManagement>
