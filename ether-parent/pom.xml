@@ -96,6 +96,10 @@
 		<ether-http-problem.version>8.0.0-SNAPSHOT</ether-http-problem.version>
 		<ether-http-openapi.version>8.0.0-SNAPSHOT</ether-http-openapi.version>
 		<ether-http-client.version>8.0.0-SNAPSHOT</ether-http-client.version>
+		<ether-ai-core.version>8.0.0-SNAPSHOT</ether-ai-core.version>
+		<ether-ai-openai.version>8.0.0-SNAPSHOT</ether-ai-openai.version>
+		<ether-ai-deepseek.version>8.0.0-SNAPSHOT</ether-ai-deepseek.version>
+		<ether-logging-core.version>8.0.0-SNAPSHOT</ether-logging-core.version>
 		<ether-http-jetty12.version>8.0.0-SNAPSHOT</ether-http-jetty12.version>
 		<ether-websocket-core.version>8.0.0-SNAPSHOT</ether-websocket-core.version>
 		<ether-websocket-jetty12.version>8.0.0-SNAPSHOT</ether-websocket-jetty12.version>
@@ -236,6 +240,26 @@
 				<groupId>dev.rafex.ether.http</groupId>
 				<artifactId>ether-http-client</artifactId>
 				<version>${ether-http-client.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>dev.rafex.ether.ai</groupId>
+				<artifactId>ether-ai-core</artifactId>
+				<version>${ether-ai-core.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>dev.rafex.ether.ai</groupId>
+				<artifactId>ether-ai-openai</artifactId>
+				<version>${ether-ai-openai.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>dev.rafex.ether.ai</groupId>
+				<artifactId>ether-ai-deepseek</artifactId>
+				<version>${ether-ai-deepseek.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>dev.rafex.ether.logging</groupId>
+				<artifactId>ether-logging-core</artifactId>
+				<version>${ether-logging-core.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>dev.rafex.ether.http</groupId>
