@@ -97,6 +97,7 @@
 		<versions-maven-plugin.version>2.21.0</versions-maven-plugin.version>
 
 		<ether-config.version>9.0.0-SNAPSHOT</ether-config.version>
+		<ether-crypto.version>9.0.0-SNAPSHOT</ether-crypto.version>
 		<ether-database-core.version>9.0.0-SNAPSHOT</ether-database-core.version>
 		<ether-jdbc.version>9.0.0-SNAPSHOT</ether-jdbc.version>
 		<ether-database-postgres.version>9.0.0-SNAPSHOT</ether-database-postgres.version>
@@ -197,6 +198,11 @@
 				<groupId>dev.rafex.ether.config</groupId>
 				<artifactId>ether-config</artifactId>
 				<version>${ether-config.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>dev.rafex.ether.crypto</groupId>
+				<artifactId>ether-crypto</artifactId>
+				<version>${ether-crypto.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>dev.rafex.ether.database</groupId>
