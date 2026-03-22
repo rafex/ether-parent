@@ -17,7 +17,7 @@
 4. [Using it as a BOM (import scope)](#using-it-as-a-bom-import-scope)
 5. [Managed dependency versions](#managed-dependency-versions)
 6. [Managed build plugins](#managed-build-plugins)
-7. [Java 21 enforcement](#java-21-enforcement)
+7. [Java 25 enforcement](#java-25-enforcement)
 8. [Publishing to Maven Central](#publishing-to-maven-central)
 9. [License header management](#license-header-management)
 10. [Frequently asked questions](#frequently-asked-questions)
@@ -35,7 +35,7 @@ Java microservice projects accumulate a long list of library versions that must 
 
 Both modes give you:
 
-- Java 21 as the compile/release target
+- Java 25 as the compile/release target
 - UTF-8 encoding for all sources and reports
 - Pre-configured `maven-compiler-plugin`, `maven-surefire-plugin`, `maven-source-plugin`, `maven-javadoc-plugin`
 - A single place to bump Jackson, Jetty, or JUnit across the whole tree
@@ -52,6 +52,7 @@ graph TD
     P["ether-parent\n(BOM + parent POM)"]
 
     P --> CFG["ether-config\nTyped configuration"]
+    P --> CRYPTO["ether-crypto\nCrypto primitives"]
     P --> JSON["ether-json\nJSON codec"]
     P --> JWT["ether-jwt\nJWT issue/verify"]
     P --> DB["ether-database-core\nDatabase abstraction"]
@@ -84,7 +85,7 @@ This is the recommended approach for modules that are fully part of the ether ec
     <parent>
         <groupId>dev.rafex.ether.parent</groupId>
         <artifactId>ether-parent</artifactId>
-        <version>8.0.0-SNAPSHOT</version>
+        <version>9.0.0-SNAPSHOT</version>
     </parent>
 
     <groupId>com.example</groupId>
@@ -117,7 +118,7 @@ This is the recommended approach for modules that are fully part of the ether ec
 
 With the parent in place, you get:
 
-- Java 21 compiler settings with no `<source>` or `<target>` to repeat.
+- Java 25 compiler settings with no `<source>` or `<target>` to repeat.
 - `maven-surefire-plugin` wired to run JUnit 5 tests automatically.
 - `maven-source-plugin` attaching source JARs on every build.
 - `maven-javadoc-plugin` generating Javadoc JARs with `doclint:none` so strict Javadoc linting does not break the build.
@@ -132,7 +133,7 @@ With the parent in place, you get:
     <parent>
         <groupId>dev.rafex.ether.parent</groupId>
         <artifactId>ether-parent</artifactId>
-        <version>8.0.0-SNAPSHOT</version>
+        <version>9.0.0-SNAPSHOT</version>
     </parent>
 
     <groupId>com.example</groupId>
@@ -164,7 +165,7 @@ If your project already extends a corporate or framework parent and you cannot c
         <dependency>
             <groupId>dev.rafex.ether.parent</groupId>
             <artifactId>ether-parent</artifactId>
-            <version>8.0.0-SNAPSHOT</version>
+            <version>9.0.0-SNAPSHOT</version>
             <type>pom</type>
             <scope>import</scope>
         </dependency>
@@ -202,7 +203,7 @@ You can combine multiple BOMs. Maven processes them left-to-right; the first dec
         <dependency>
             <groupId>dev.rafex.ether.parent</groupId>
             <artifactId>ether-parent</artifactId>
-            <version>8.0.0-SNAPSHOT</version>
+            <version>9.0.0-SNAPSHOT</version>
             <type>pom</type>
             <scope>import</scope>
         </dependency>
@@ -238,23 +239,24 @@ The table below lists all third-party and ether dependencies whose versions are 
 | `io.netty:netty-codec-http` | 4.1.131.Final |
 | `io.netty:netty-handler` | 4.1.131.Final |
 | `org.glowroot:glowroot-agent-api` | 0.14.0-beta.3 |
-| `dev.rafex.ether.config:ether-config` | 8.0.0-SNAPSHOT |
-| `dev.rafex.ether.json:ether-json` | 8.0.0-SNAPSHOT |
-| `dev.rafex.ether.jwt:ether-jwt` | 8.0.0-SNAPSHOT |
-| `dev.rafex.ether.database:ether-database-core` | 8.0.0-SNAPSHOT |
-| `dev.rafex.ether.database:ether-database-postgres` | 8.0.0-SNAPSHOT |
-| `dev.rafex.ether.jdbc:ether-jdbc` | 8.0.0-SNAPSHOT |
-| `dev.rafex.ether.observability:ether-observability-core` | 8.0.0-SNAPSHOT |
-| `dev.rafex.ether.http:ether-http-core` | 8.0.0-SNAPSHOT |
-| `dev.rafex.ether.http:ether-http-security` | 8.0.0-SNAPSHOT |
-| `dev.rafex.ether.http:ether-http-problem` | 8.0.0-SNAPSHOT |
-| `dev.rafex.ether.http:ether-http-openapi` | 8.0.0-SNAPSHOT |
-| `dev.rafex.ether.http:ether-http-client` | 8.0.0-SNAPSHOT |
-| `dev.rafex.ether.http:ether-http-jetty12` | 8.0.0-SNAPSHOT |
-| `dev.rafex.ether.websocket:ether-websocket-core` | 8.0.0-SNAPSHOT |
-| `dev.rafex.ether.websocket:ether-websocket-jetty12` | 8.0.0-SNAPSHOT |
-| `dev.rafex.ether.webhook:ether-webhook` | 8.0.0-SNAPSHOT |
-| `dev.rafex.ether.glowroot:ether-glowroot-jetty12` | 8.0.0-SNAPSHOT |
+| `dev.rafex.ether.config:ether-config` | 9.0.0-SNAPSHOT |
+| `dev.rafex.ether.crypto:ether-crypto` | 9.0.0-SNAPSHOT |
+| `dev.rafex.ether.json:ether-json` | 9.0.0-SNAPSHOT |
+| `dev.rafex.ether.jwt:ether-jwt` | 9.0.0-SNAPSHOT |
+| `dev.rafex.ether.database:ether-database-core` | 9.0.0-SNAPSHOT |
+| `dev.rafex.ether.database:ether-database-postgres` | 9.0.0-SNAPSHOT |
+| `dev.rafex.ether.jdbc:ether-jdbc` | 9.0.0-SNAPSHOT |
+| `dev.rafex.ether.observability:ether-observability-core` | 9.0.0-SNAPSHOT |
+| `dev.rafex.ether.http:ether-http-core` | 9.0.0-SNAPSHOT |
+| `dev.rafex.ether.http:ether-http-security` | 9.0.0-SNAPSHOT |
+| `dev.rafex.ether.http:ether-http-problem` | 9.0.0-SNAPSHOT |
+| `dev.rafex.ether.http:ether-http-openapi` | 9.0.0-SNAPSHOT |
+| `dev.rafex.ether.http:ether-http-client` | 9.0.0-SNAPSHOT |
+| `dev.rafex.ether.http:ether-http-jetty12` | 9.0.0-SNAPSHOT |
+| `dev.rafex.ether.websocket:ether-websocket-core` | 9.0.0-SNAPSHOT |
+| `dev.rafex.ether.websocket:ether-websocket-jetty12` | 9.0.0-SNAPSHOT |
+| `dev.rafex.ether.webhook:ether-webhook` | 9.0.0-SNAPSHOT |
+| `dev.rafex.ether.glowroot:ether-glowroot-jetty12` | 9.0.0-SNAPSHOT |
 
 ---
 
@@ -264,28 +266,28 @@ The table below lists all third-party and ether dependencies whose versions are 
 
 | Plugin | Version | Notes |
 |---|---|---|
-| `maven-compiler-plugin` | 3.14.1 | Source/target/release all set to Java 21 |
+| `maven-compiler-plugin` | 3.15.0 | Source/target/release all set to Java 25 |
 | `maven-surefire-plugin` | 3.5.5 | JUnit 5 auto-detected; no additional config needed |
-| `maven-jar-plugin` | 3.4.2 | |
-| `maven-source-plugin` | 3.3.1 | `attach-sources` goal bound to `package` |
-| `maven-javadoc-plugin` | 3.11.3 | `doclint:none`, `quiet:true`, `failOnWarnings:false` |
+| `maven-jar-plugin` | 3.5.0 | |
+| `maven-source-plugin` | 3.4.0 | `attach-sources` goal bound to `package` |
+| `maven-javadoc-plugin` | 3.12.0 | `doclint:none`, `quiet:true`, `failOnWarnings:false` |
 | `maven-install-plugin` | 3.1.4 | |
 | `maven-deploy-plugin` | 3.1.4 | |
 | `maven-clean-plugin` | 3.5.0 | |
-| `maven-resources-plugin` | 3.3.1 | |
+| `maven-resources-plugin` | 3.5.0 | |
 | `maven-site-plugin` | 4.0.0-M16 | |
-| `maven-enforcer-plugin` | 3.6.2 | Enforces Java 21 minimum JDK |
+| `maven-enforcer-plugin` | 3.6.2 | Enforces Java 25 minimum JDK |
 | `maven-gpg-plugin` | 3.2.8 | GPG artifact signing (deploy profile) |
-| `maven-release-plugin` | 3.1.1 | Tag format `v@{project.version}`, auto-push commits |
+| `maven-release-plugin` | 3.3.1 | Tag format `v@{project.version}`, auto-push commits |
 | `central-publishing-maven-plugin` | 0.10.0 | Sonatype Central publishing, waits until published |
-| `license-maven-plugin` | 2.6.0 | MIT header on all Java sources |
-| `versions-maven-plugin` | 2.18.0 | Dependency update reports |
+| `license-maven-plugin` | 2.7.1 | MIT header on all Java sources |
+| `versions-maven-plugin` | 2.21.0 | Dependency update reports |
 
 ---
 
-## Java 21 enforcement
+## Java 25 enforcement
 
-`ether-parent` configures the `maven-enforcer-plugin` to reject builds running on a JDK older than 21. This fires during the `validate` phase — the very first phase Maven executes — so you get a clear failure message before any compilation begins.
+`ether-parent` configures the `maven-enforcer-plugin` to reject builds running on a JDK older than 25. This fires during the `validate` phase — the very first phase Maven executes — so you get a clear failure message before any compilation begins.
 
 ```xml
 <!-- Already in ether-parent's pluginManagement; shown here for reference -->
@@ -299,7 +301,7 @@ The table below lists all third-party and ether dependencies whose versions are 
             <configuration>
                 <rules>
                     <requireJavaVersion>
-                        <version>21</version>
+                        <version>25</version>
                     </requireJavaVersion>
                 </rules>
             </configuration>
@@ -312,7 +314,7 @@ If you run `mvn validate` on a JDK 17 machine, Maven prints:
 
 ```
 [ERROR] Rule 0: org.apache.maven.enforcer.rules.version.RequireJavaVersion failed with message:
-Detected JDK Version 17.0.x is not in the allowed range [21,).
+Detected JDK Version 17.0.x is not in the allowed range [25,).
 ```
 
 ---
@@ -400,7 +402,7 @@ Yes. Declare the artifact again in a `<dependencyManagement>` block inside the c
 
 **Can I use a stable release instead of a SNAPSHOT?**
 
-Published releases of `ether-parent` are available on Maven Central under the same coordinates. Replace `8.0.0-SNAPSHOT` with the latest stable version.
+Published releases of `ether-parent` are available on Maven Central under the same coordinates. Replace `9.0.0-SNAPSHOT` with the latest stable version.
 
 **Does using `ether-parent` as a BOM affect my plugin configuration?**
 
