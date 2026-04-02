@@ -371,16 +371,12 @@
 					<artifactId>maven-javadoc-plugin</artifactId>
 					<version>${maven-javadoc-plugin.version}</version>
 					<configuration>
+						<!-- Parámetros válidos para jar / javadoc / test-jar -->
 						<source>${java.version}</source>
 						<release>${java.version}</release>
 						<doclint>none</doclint>
 						<quiet>true</quiet>
 						<failOnWarnings>false</failOnWarnings>
-						<!-- javadoc:fix — genera stubs deterministas en el código fuente -->
-						<fixTags>param,return,throws,link</fixTags>
-						<level>public</level>
-						<defaultAuthor>Raúl Eduardo González Argote</defaultAuthor>
-						<defaultSince>${project.version}</defaultSince>
 					</configuration>
 					<executions>
 						<execution>
@@ -388,6 +384,22 @@
 							<goals>
 								<goal>jar</goal>
 							</goals>
+						</execution>
+						<execution>
+							<!-- javadoc:fix — genera stubs deterministas en el código fuente.
+							     phase=none → no corre automáticamente; se invoca manualmente
+							     con: mvn javadoc:fix -->
+							<id>fix-javadoc-stubs</id>
+							<phase>none</phase>
+							<goals>
+								<goal>fix</goal>
+							</goals>
+							<configuration>
+								<fixTags>param,return,throws,link</fixTags>
+								<level>public</level>
+								<defaultAuthor>Raúl Eduardo González Argote</defaultAuthor>
+								<defaultSince>${project.version}</defaultSince>
+							</configuration>
 						</execution>
 					</executions>
 				</plugin>
