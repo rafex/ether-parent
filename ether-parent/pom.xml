@@ -6,7 +6,7 @@
 
 	<groupId>dev.rafex.ether.parent</groupId>
 	<artifactId>ether-parent</artifactId>
-	<version>9.5.0-SNAPSHOT</version>
+	<version>9.5.5-SNAPSHOT</version>
 
 	<packaging>pom</packaging>
 	<name>${project.artifactId}</name>
@@ -96,28 +96,28 @@
 		<glowroot-agent-api.version>0.14.0-beta.3</glowroot-agent-api.version>
 		<versions-maven-plugin.version>2.21.0</versions-maven-plugin.version>
 
-		<ether-config.version>9.5.0-SNAPSHOT</ether-config.version>
-		<ether-crypto.version>9.5.0-SNAPSHOT</ether-crypto.version>
-		<ether-database-core.version>9.5.0-SNAPSHOT</ether-database-core.version>
-		<ether-jdbc.version>9.5.0-SNAPSHOT</ether-jdbc.version>
-		<ether-database-postgres.version>9.5.0-SNAPSHOT</ether-database-postgres.version>
-		<ether-json.version>9.5.0-SNAPSHOT</ether-json.version>
-		<ether-jwt.version>9.5.0-SNAPSHOT</ether-jwt.version>
-		<ether-observability-core.version>9.5.0-SNAPSHOT</ether-observability-core.version>
-		<ether-http-core.version>9.5.0-SNAPSHOT</ether-http-core.version>
-		<ether-http-security.version>9.5.0-SNAPSHOT</ether-http-security.version>
-		<ether-http-problem.version>9.5.0-SNAPSHOT</ether-http-problem.version>
-		<ether-http-openapi.version>9.5.0-SNAPSHOT</ether-http-openapi.version>
-		<ether-http-client.version>9.5.0-SNAPSHOT</ether-http-client.version>
-		<ether-ai-core.version>9.5.0-SNAPSHOT</ether-ai-core.version>
-		<ether-ai-openai.version>9.5.0-SNAPSHOT</ether-ai-openai.version>
-		<ether-ai-deepseek.version>9.5.0-SNAPSHOT</ether-ai-deepseek.version>
-		<ether-logging-core.version>9.5.0-SNAPSHOT</ether-logging-core.version>
-		<ether-http-jetty12.version>9.5.0-SNAPSHOT</ether-http-jetty12.version>
-		<ether-websocket-core.version>9.5.0-SNAPSHOT</ether-websocket-core.version>
-		<ether-websocket-jetty12.version>9.5.0-SNAPSHOT</ether-websocket-jetty12.version>
-		<ether-webhook.version>9.5.0-SNAPSHOT</ether-webhook.version>
-		<ether-glowroot-jetty12.version>9.5.0-SNAPSHOT</ether-glowroot-jetty12.version>
+		<ether-config.version>9.5.5-SNAPSHOT</ether-config.version>
+		<ether-crypto.version>9.5.5-SNAPSHOT</ether-crypto.version>
+		<ether-database-core.version>9.5.5-SNAPSHOT</ether-database-core.version>
+		<ether-jdbc.version>9.5.5-SNAPSHOT</ether-jdbc.version>
+		<ether-database-postgres.version>9.5.5-SNAPSHOT</ether-database-postgres.version>
+		<ether-json.version>9.5.5-SNAPSHOT</ether-json.version>
+		<ether-jwt.version>9.5.5-SNAPSHOT</ether-jwt.version>
+		<ether-observability-core.version>9.5.5-SNAPSHOT</ether-observability-core.version>
+		<ether-http-core.version>9.5.5-SNAPSHOT</ether-http-core.version>
+		<ether-http-security.version>9.5.5-SNAPSHOT</ether-http-security.version>
+		<ether-http-problem.version>9.5.5-SNAPSHOT</ether-http-problem.version>
+		<ether-http-openapi.version>9.5.5-SNAPSHOT</ether-http-openapi.version>
+		<ether-http-client.version>9.5.5-SNAPSHOT</ether-http-client.version>
+		<ether-ai-core.version>9.5.5-SNAPSHOT</ether-ai-core.version>
+		<ether-ai-openai.version>9.5.5-SNAPSHOT</ether-ai-openai.version>
+		<ether-ai-deepseek.version>9.5.5-SNAPSHOT</ether-ai-deepseek.version>
+		<ether-logging-core.version>9.5.5-SNAPSHOT</ether-logging-core.version>
+		<ether-http-jetty12.version>9.5.5-SNAPSHOT</ether-http-jetty12.version>
+		<ether-websocket-core.version>9.5.5-SNAPSHOT</ether-websocket-core.version>
+		<ether-websocket-jetty12.version>9.5.5-SNAPSHOT</ether-websocket-jetty12.version>
+		<ether-webhook.version>9.5.5-SNAPSHOT</ether-webhook.version>
+		<ether-glowroot-jetty12.version>9.5.5-SNAPSHOT</ether-glowroot-jetty12.version>
 	</properties>
 
 	<dependencyManagement>
