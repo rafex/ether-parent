@@ -118,6 +118,8 @@
 		<ether-websocket-jetty12.version>9.5.5-SNAPSHOT</ether-websocket-jetty12.version>
 		<ether-webhook.version>9.5.5-SNAPSHOT</ether-webhook.version>
 		<ether-glowroot-jetty12.version>9.5.5-SNAPSHOT</ether-glowroot-jetty12.version>
+		<ether-hexagonal-archetype.version>1.0.0-SNAPSHOT</ether-hexagonal-archetype.version>
+		<ether-brain-parent.version>0.1.0-SNAPSHOT</ether-brain-parent.version>
 	</properties>
 
 	<dependencyManagement>
