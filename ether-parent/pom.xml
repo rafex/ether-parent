@@ -69,6 +69,7 @@
 		<maven-gpg-plugin.version>3.2.8</maven-gpg-plugin.version>
 		<maven-enforcer-plugin.version>3.6.2</maven-enforcer-plugin.version>
 		<maven-release-plugin.version>3.3.1</maven-release-plugin.version>
+		<flatten-maven-plugin.version>1.7.0</flatten-maven-plugin.version>
 
 		<license-maven-plugin.version>2.7.1</license-maven-plugin.version>
 		<central-publishing-maven-plugin.version>0.10.0</central-publishing-maven-plugin.version>
@@ -529,8 +530,40 @@
 						</execution>
 					</executions>
 				</plugin>
+				<!-- Flatten POMs before staging so Central's validator sees all
+				     inherited fields (description, url, licenses, scm, developers)
+				     and resolved dependency versions directly in each module POM.
+				     Without this, Central validates raw pom.xml and cannot resolve
+				     parent-chain inheritance from a first-time upload. -->
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>flatten-maven-plugin</artifactId>
+					<version>${flatten-maven-plugin.version}</version>
+					<configuration>
+						<updatePomFile>true</updatePomFile>
+						<flattenMode>ossrh</flattenMode>
+					</configuration>
+					<executions>
+						<execution>
+							<id>flatten</id>
+							<phase>process-resources</phase>
+							<goals><goal>flatten</goal></goals>
+						</execution>
+						<execution>
+							<id>flatten.clean</id>
+							<phase>clean</phase>
+							<goals><goal>clean</goal></goals>
+						</execution>
+					</executions>
+				</plugin>
 			</plugins>
 		</pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>flatten-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
 	</build>
 
 	<reporting>
