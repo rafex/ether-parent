@@ -120,6 +120,7 @@
 		<ether-glowroot-jetty12.version>9.5.5-SNAPSHOT</ether-glowroot-jetty12.version>
 		<ether-hexagonal-archetype.version>1.0.0-SNAPSHOT</ether-hexagonal-archetype.version>
 		<ether-brain-parent.version>0.1.0-SNAPSHOT</ether-brain-parent.version>
+		<ether-di.version>1.0.0-SNAPSHOT</ether-di.version>
 	</properties>
 
 	<dependencyManagement>
@@ -225,6 +226,11 @@
 				<groupId>dev.rafex.ether.json</groupId>
 				<artifactId>ether-json</artifactId>
 				<version>${ether-json.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>dev.rafex.ether.di</groupId>
+				<artifactId>ether-di</artifactId>
+				<version>${ether-di.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>dev.rafex.ether.jwt</groupId>
